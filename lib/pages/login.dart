@@ -186,7 +186,7 @@ class LoginFormState extends State<LoginForm> {
         right:MediaQuery.of(context).size.width*0.15
       ),
       margin: EdgeInsets.only(
-        bottom: keyBoardState == true ? 0 : MediaQuery.of(context).size.height*0.28
+        bottom: keyBoardState == true ? 0 : MediaQuery.of(context).size.height*0.13
       ),
       decoration: BoxDecoration(
         // border: Border.all(
