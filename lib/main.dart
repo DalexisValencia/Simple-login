@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         hoverColor: Color(0xFFffb44a)// Naranja
       ),
       //home: WelcomeScaffold()
-      // home: LoginScaffold()
-      home: RegisterScaffold()
+      home: LoginScaffold()
+      // home: RegisterScaffold()
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:third_test_app/pages/circle.dart';
+import 'package:third_test_app/pages/header.dart';
 import 'package:third_test_app/widgets/button.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:third_test_app/widgets/input.dart';
@@ -33,7 +34,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height *0.13,
-            child: Header(),
+            // child: Header(),
+            child: HeaderCustom(
+              title: 'LOG IN',
+              titleColor: Theme.of(context).primaryColorDark,
+              subtitle: 'TO CONTINUE',
+              subtitleColor: Theme.of(context).accentColor
+            )
           ),
           Positioned(
             bottom: 0,
@@ -130,47 +137,6 @@ class StackedHead extends StatelessWidget {
 }
 }
 
-class Header extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: <Widget>[
-          Container(
-            transform: Matrix4.translationValues(0, -25, 0),
-            width: MediaQuery.of(context).size.width*0.60,
-            child: FittedBox(
-              fit: BoxFit.none,
-              child:  Text(
-                "LOG IN",
-                style: Theme.of(context).textTheme.display1.copyWith(
-                  fontWeight:FontWeight.bold,
-                  color: Theme.of(context).primaryColorDark,
-                  fontFamily: 'Litia',
-                ),
-              ),
-            ),
-          ),
-          Container(
-            transform: Matrix4.translationValues(0, -50, 0),
-            width: MediaQuery.of(context).size.width*0.32,
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child:Text(
-                'TO CONTINUE',
-                style: Theme.of(context).textTheme.title.copyWith(
-                  fontWeight:FontWeight.w300,
-                  color: Theme.of(context).accentColor
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class LoginForm extends StatefulWidget {
   @override
@@ -183,9 +149,6 @@ class LoginFormState extends State<LoginForm> {
   TextEditingController pass;
   FocusNode focusLoginUser;
   FocusNode focusLoginPass;
-  loginUser() {
-    print("El usurio se ha logeado");
-  }
 
   finish() {
     FocusScope.of(context).requestFocus(new FocusNode());
