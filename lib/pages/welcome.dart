@@ -102,8 +102,6 @@ class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
                   ),
                   child: Footer()
                 )
-                
-                
               ],
             ),
           )
@@ -191,7 +189,9 @@ class Footer extends StatelessWidget {
                 ),
                 padding: EdgeInsets.only(top:22, bottom:22),
                 onPressed: (){
-                  Navigator.of(context).push(createPage(LoginScaffold()));
+                  Navigator.of(context).push(
+                    createPage(LoginScaffold(animtedOpacityProp: false)
+                  ));
                 },
                 child: Text(
                   "SIGN UP",
@@ -222,7 +222,11 @@ class Footer extends StatelessWidget {
               ),
             ),
             onTap: (){
-              Navigator.of(context).push(createPage(RegisterScaffold()));
+              Navigator.of(context).push(
+                createPage(RegisterScaffold(animatedOpacityProp: false))
+              ).then((_){
+                print("regresado");
+              });
             },
           )
           

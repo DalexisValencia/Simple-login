@@ -6,29 +6,62 @@ import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:third_test_app/widgets/input.dart';
 
 class LoginScaffold extends StatelessWidget {
+  final bool animtedOpacityProp;
+  LoginScaffold({this.animtedOpacityProp});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).accentColor,
-      body: LoginPage(),
+      body: LoginPage(animtedOpacityProp: animtedOpacityProp),
     );
   }
 }
 
 class LoginPage extends StatefulWidget {
+  final bool animtedOpacityProp;
+  LoginPage({this.animtedOpacityProp});
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
   bool animatedOpacityState = true;
-  @override
-  void initState() {
-    super.initState();
+  void setAnimationState(state) {
     setState(() {
-      animatedOpacityState = true;
+      animatedOpacityState = state;
     });
   }
+
+  void setTest(){
+    print('segunda final');
+    setAnimationState(false);
+  }
+
+  void yourFunction(context) {
+    // print(mounted);
+    setAnimationState(true);
+    // setAnimationState(true);
+  }
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // If user resumed to this app, check permission
+    if(state == AppLifecycleState.resumed) {
+     // checkPermission();
+    }
+  }
+  @override
+  void initState() {
+    setAnimationState(widget.animtedOpacityProp);
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) => yourFunction(context));
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 subtitleColor: Theme.of(context).accentColor
               ),
               duration: Duration(
-                milliseconds: 3000
+                milliseconds: 600
               ),
             ),
           ),
@@ -64,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: LoginForm(),
               ),
               duration: Duration(
-                milliseconds: 3000
+                milliseconds: 600
               ),
             ),
             
