@@ -20,6 +20,14 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool animatedOpacity = false;
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      animatedOpacity = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,12 +55,25 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height*0.18,
-            child: HeaderCustom(
-              title: 'SIGN UP',
-              titleColor: Theme.of(context).hoverColor,
-              subtitle: 'TO CONTINUE',
-              subtitleColor: Theme.of(context).accentColor
-            ),
+            child: AnimatedOpacity(
+              duration: Duration(
+                milliseconds: 3000
+              ),
+              opacity: animatedOpacity ? 1 : 0.0,
+              child: AnimatedOpacity(
+                opacity: animatedOpacity ? 1 : 0.0,
+                duration: Duration(
+                  milliseconds: 3000
+                ),
+                child: HeaderCustom(
+                  title: 'SIGN UP',
+                  titleColor: Theme.of(context).hoverColor,
+                  subtitle: 'TO CONTINUE',
+                  subtitleColor: Theme.of(context).accentColor
+                ),
+              ),
+            ) 
+            
           ),
           Positioned(
             bottom: 0,

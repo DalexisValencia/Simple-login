@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:third_test_app/pages/login.dart';
+import 'package:third_test_app/pages/register.dart';
 
 class WelcomeScaffold extends StatelessWidget {
   @override
@@ -14,16 +16,53 @@ class WelcomePage extends StatefulWidget {
   _WelcomePageState createState() => _WelcomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
+  bool animatedOpacity = false;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+  super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.paused) {
+      // went to Background
+    }
+    if (state == AppLifecycleState.resumed) {
+      // came back to Foreground
+    }
+  }
+
+  exampleAnimation(state) {
+    setState(() {
+      animatedOpacity = state;
+    });
+  }
+
+  @override
+  void initState(){
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+    print(animatedOpacity);
+    setState(() {
+      animatedOpacity = true;
+    });
+    print("en el inir");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
+   // exampleAnimation(true); 
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
-          end: Alignment.bottomCenter, //Alignment(0.8, 0.0),
+          end: Alignment.bottomCenter,
           colors: [
             Theme.of(context).hoverColor,
             Theme.of(context).primaryColorLight
@@ -49,8 +88,22 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Header(),
-                Footer()
+                AnimatedOpacity(
+                  opacity: animatedOpacity ? 1.0 : 0.0,
+                  duration: Duration(
+                    milliseconds: 3000
+                  ),
+                  child: Header(),
+                ),
+                AnimatedOpacity(
+                  opacity: 1,
+                  duration: Duration(
+                    milliseconds: 3000
+                  ),
+                  child: Footer()
+                )
+                
+                
               ],
             ),
           )
@@ -137,7 +190,9 @@ class Footer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40)
                 ),
                 padding: EdgeInsets.only(top:22, bottom:22),
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.of(context).push(createPage(LoginScaffold()));
+                },
                 child: Text(
                   "SIGN UP",
                   style: Theme.of(context).textTheme.body1.copyWith(
@@ -156,17 +211,39 @@ class Footer extends StatelessWidget {
               color: Theme.of(context).accentColor
             ),
           ),
-          Text(
-            'Login',
-             textAlign: TextAlign.center,
-             style: TextStyle(
-               color:Theme.of(context).accentColor,
-               decoration: TextDecoration.underline,
-               decorationColor: Theme.of(context).accentColor
-             ),
+          GestureDetector(
+            child: Text(
+              'Login',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color:Theme.of(context).accentColor,
+                decoration: TextDecoration.underline,
+                decorationColor: Theme.of(context).accentColor
+              ),
+            ),
+            onTap: (){
+              Navigator.of(context).push(createPage(RegisterScaffold()));
+            },
           )
+          
         ],
       )
     );
   }
+}
+
+Route createPage(children) {
+  return PageRouteBuilder(
+    pageBuilder: (BuildContext context, Animation animation, Animation animationSecondary) => children,
+    transitionsBuilder: (context, animation, secondaryAnimation, child){
+     //return child;
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: Offset(1,0),
+          end: Offset.zero
+        ).animate(animation),
+        child: child,
+      );
+    }
+  );
 }

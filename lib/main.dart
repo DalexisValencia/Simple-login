@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         primaryColorDark: Color(0xFFa93674),//morado oscuro
         hoverColor: Color(0xFFffb44a)// Naranja
       ),
-      //home: WelcomeScaffold()
-      home: LoginScaffold()
+      home: WelcomeScaffold()
+      // home: LoginScaffold()
       // home: RegisterScaffold()
     );
   }

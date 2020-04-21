@@ -21,6 +21,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool animatedOpacityState = true;
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      animatedOpacityState = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,20 +42,32 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height *0.13,
-            // child: Header(),
-            child: HeaderCustom(
-              title: 'LOG IN',
-              titleColor: Theme.of(context).primaryColorDark,
-              subtitle: 'TO CONTINUE',
-              subtitleColor: Theme.of(context).accentColor
-            )
+            child: AnimatedOpacity(
+              opacity: animatedOpacityState ? 1 : 0,
+              child: HeaderCustom(
+                title: 'LOG IN',
+                titleColor: Theme.of(context).primaryColorDark,
+                subtitle: 'TO CONTINUE',
+                subtitleColor: Theme.of(context).accentColor
+              ),
+              duration: Duration(
+                milliseconds: 3000
+              ),
+            ),
           ),
           Positioned(
             bottom: 0,
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-                child: LoginForm(),
-            )
+            child: AnimatedOpacity(
+              opacity: animatedOpacityState ? 1 : 0,
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                  child: LoginForm(),
+              ),
+              duration: Duration(
+                milliseconds: 3000
+              ),
+            ),
+            
           )
         ],
       ),
