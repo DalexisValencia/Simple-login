@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'package:loading/indicator/ball_pulse_indicator.dart';
+import 'package:loading/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:third_test_app/pages/login.dart';
 import 'package:third_test_app/pages/register.dart';
@@ -18,6 +21,7 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
   bool animatedOpacity = false;
+  bool showScreen = false; 
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -36,15 +40,29 @@ class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
     });
   }
 
+  justInCase() {
+    print("Volvimos a la vista welcome");
+  }
+
   @override
   void initState(){
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-    print(animatedOpacity);
-    setState(() {
-      animatedOpacity = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) => justInCase());
+    Future.delayed(
+      Duration(milliseconds: 2000), (){
+      setState(() {
+        showScreen = true;
+      });
+      Future.delayed(
+        Duration(milliseconds: 500), () {
+          print("Despúes de un segundo");
+          setState(() {
+            animatedOpacity = true;
+          });
+        }
+      );
     });
-    print("en el inir");
   }
 
   @override
@@ -55,7 +73,6 @@ class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
 
   @override
   Widget build(BuildContext context) {
-   // exampleAnimation(true); 
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -75,6 +92,18 @@ class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
       ),
       child: Column(
         children: <Widget>[
+          showScreen == false ? 
+            Container(
+              margin: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height*0.43
+              ),
+              child: Loading(
+                indicator: BallPulseIndicator(),
+                size: 100.0,
+                color: Theme.of(context).primaryColorDark,
+              ),
+          )
+          :
           Container(
             margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.20),
             height: MediaQuery.of(context).size.height*0.73,
@@ -88,20 +117,20 @@ class _WelcomePageState extends State<WelcomePage> with WidgetsBindingObserver{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                AnimatedOpacity(
-                  opacity: animatedOpacity ? 1.0 : 0.0,
-                  duration: Duration(
-                    milliseconds: 3000
+                  AnimatedOpacity(
+                    opacity: animatedOpacity ? 1.0 : 0.0,
+                    duration: Duration(
+                      milliseconds: 800
+                    ),
+                    child: Header(),
                   ),
-                  child: Header(),
-                ),
-                AnimatedOpacity(
-                  opacity: 1,
-                  duration: Duration(
-                    milliseconds: 3000
-                  ),
-                  child: Footer()
-                )
+                  AnimatedOpacity(
+                    opacity: animatedOpacity ? 1.0 : 0.0,
+                    duration: Duration(
+                      milliseconds: 800
+                    ),
+                    child: Footer()
+                  )
               ],
             ),
           )
