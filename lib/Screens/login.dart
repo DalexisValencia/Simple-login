@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:third_test_app/pages/circle.dart';
-import 'package:third_test_app/pages/header.dart';
+import 'package:third_test_app/Screens/circle.dart';
+import 'package:third_test_app/Screens/header.dart';
 import 'package:third_test_app/widgets/button.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:third_test_app/widgets/input.dart';
@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
     });
   }
 
-  void setTest(){
+  void setTest() {
     print('segunda final');
     setAnimationState(false);
   }
@@ -42,12 +42,14 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
     setAnimationState(true);
     // setAnimationState(true);
   }
+
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // If user resumed to this app, check permission
-    if(state == AppLifecycleState.resumed) {
-     // checkPermission();
+    if (state == AppLifecycleState.resumed) {
+      // checkPermission();
     }
   }
+
   @override
   void initState() {
     setAnimationState(widget.animtedOpacityProp);
@@ -70,22 +72,17 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
       width: double.infinity,
       child: Stack(
         children: <Widget>[
+          Positioned(child: StackedHead()),
           Positioned(
-            child: StackedHead()
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height *0.13,
+            top: MediaQuery.of(context).size.height * 0.13,
             child: AnimatedOpacity(
               opacity: animatedOpacityState ? 1 : 0,
               child: HeaderCustom(
-                title: 'LOG IN',
-                titleColor: Theme.of(context).primaryColorDark,
-                subtitle: 'TO CONTINUE',
-                subtitleColor: Theme.of(context).accentColor
-              ),
-              duration: Duration(
-                milliseconds: 600
-              ),
+                  title: 'LOG IN',
+                  titleColor: Theme.of(context).primaryColorDark,
+                  subtitle: 'TO CONTINUE',
+                  subtitleColor: Theme.of(context).accentColor),
+              duration: Duration(milliseconds: 600),
             ),
           ),
           Positioned(
@@ -94,102 +91,106 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
               opacity: animatedOpacityState ? 1 : 0,
               child: Align(
                 alignment: FractionalOffset.bottomCenter,
-                  child: LoginForm(),
+                child: LoginForm(),
               ),
-              duration: Duration(
-                milliseconds: 600
-              ),
+              duration: Duration(milliseconds: 600),
             ),
-            
           )
         ],
       ),
     );
   }
 }
+
 class StackedHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-    children: <Widget>[
+    return Stack(children: <Widget>[
       Positioned(
-        top: -MediaQuery.of(context).size.width*0.40,
-        left: -MediaQuery.of(context).size.width*0.25,
+        top: -MediaQuery.of(context).size.width * 0.40,
+        left: -MediaQuery.of(context).size.width * 0.25,
         child: CircleGradient(
-          width: MediaQuery.of(context).size.width + 45,
-          height: MediaQuery.of(context).size.width + 45,
-          background: 'gradient',
-          colors: [Theme.of(context).hoverColor, Theme.of(context).primaryColorLight],
-          radius: MediaQuery.of(context).size.width,
-          gradiendStart: Alignment.topRight,
-          gradientEnd: Alignment.bottomRight,
-          border: null 
-        ),
+            width: MediaQuery.of(context).size.width + 45,
+            height: MediaQuery.of(context).size.width + 45,
+            background: 'gradient',
+            colors: [
+              Theme.of(context).hoverColor,
+              Theme.of(context).primaryColorLight
+            ],
+            radius: MediaQuery.of(context).size.width,
+            gradiendStart: Alignment.topRight,
+            gradientEnd: Alignment.bottomRight,
+            border: null),
       ),
       Positioned(
-        top: - MediaQuery.of(context).size.width*0.13,
-        right: MediaQuery.of(context).size.width*0.10,
+        top: -MediaQuery.of(context).size.width * 0.13,
+        right: MediaQuery.of(context).size.width * 0.10,
         child: CircleGradient(
-          width: MediaQuery.of(context).size.width*0.75,
-          height: MediaQuery.of(context).size.width*0.75,  
+          width: MediaQuery.of(context).size.width * 0.75,
+          height: MediaQuery.of(context).size.width * 0.75,
           background: 'plane',
           colors: [Color(0x00000000)],
           radius: MediaQuery.of(context).size.width,
           gradiendStart: null,
           gradientEnd: null,
-          border: Border.all(
-            width: 3,
-            color: Theme.of(context).primaryColorDark
-          ), 
+          border:
+              Border.all(width: 3, color: Theme.of(context).primaryColorDark),
         ),
       ),
       Positioned(
-        top: -MediaQuery.of(context).size.width*0.12,
-        left: -MediaQuery.of(context).size.width*0.1,
+        top: -MediaQuery.of(context).size.width * 0.12,
+        left: -MediaQuery.of(context).size.width * 0.1,
         child: CircleGradient(
-          width: MediaQuery.of(context).size.width*0.37,
-          height: MediaQuery.of(context).size.width*0.37,  
+          width: MediaQuery.of(context).size.width * 0.37,
+          height: MediaQuery.of(context).size.width * 0.37,
           background: 'gradient',
-          colors: [Theme.of(context).hoverColor, Theme.of(context).primaryColorLight],
-          radius: MediaQuery.of(context).size.width*0.70,
+          colors: [
+            Theme.of(context).hoverColor,
+            Theme.of(context).primaryColorLight
+          ],
+          radius: MediaQuery.of(context).size.width * 0.70,
           gradiendStart: Alignment.topLeft,
           gradientEnd: Alignment.bottomRight,
-          border: null, 
+          border: null,
         ),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.width*0.31,
-        left: MediaQuery.of(context).size.width*0.04,
+        top: MediaQuery.of(context).size.width * 0.31,
+        left: MediaQuery.of(context).size.width * 0.04,
         child: CircleGradient(
-          width: MediaQuery.of(context).size.width*0.11,
-          height: MediaQuery.of(context).size.width*0.11,  
+          width: MediaQuery.of(context).size.width * 0.11,
+          height: MediaQuery.of(context).size.width * 0.11,
           background: 'gradient',
-          colors: [Theme.of(context).hoverColor, Theme.of(context).primaryColorLight],
+          colors: [
+            Theme.of(context).hoverColor,
+            Theme.of(context).primaryColorLight
+          ],
           radius: MediaQuery.of(context).size.width,
           gradiendStart: Alignment.topRight,
           gradientEnd: Alignment.bottomLeft,
-          border: null, 
+          border: null,
         ),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.width*0.11,
-        right: MediaQuery.of(context).size.width*0.26,
+        top: MediaQuery.of(context).size.width * 0.11,
+        right: MediaQuery.of(context).size.width * 0.26,
         child: CircleGradient(
-          width: MediaQuery.of(context).size.width*0.05,
-          height: MediaQuery.of(context).size.width*0.05,  
+          width: MediaQuery.of(context).size.width * 0.05,
+          height: MediaQuery.of(context).size.width * 0.05,
           background: 'gradient',
-          colors: [Theme.of(context).hoverColor, Theme.of(context).primaryColorDark],
+          colors: [
+            Theme.of(context).hoverColor,
+            Theme.of(context).primaryColorDark
+          ],
           radius: MediaQuery.of(context).size.width,
           gradiendStart: Alignment.topRight,
           gradientEnd: Alignment.bottomLeft,
-          border: null, 
+          border: null,
         ),
       )
-    ]  
-  );
+    ]);
+  }
 }
-}
-
 
 class LoginForm extends StatefulWidget {
   @override
@@ -208,7 +209,7 @@ class LoginFormState extends State<LoginForm> {
     print(user.text);
     print(pass.text);
   }
-  
+
   next() {
     FocusScope.of(context).requestFocus(focusLoginPass);
   }
@@ -228,80 +229,72 @@ class LoginFormState extends State<LoginForm> {
     pass = TextEditingController();
     focusLoginUser = FocusNode();
     focusLoginPass = FocusNode();
-}
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,//  *0.73
+      width: MediaQuery.of(context).size.width, //  *0.73
       padding: EdgeInsets.only(
-        left:MediaQuery.of(context).size.width*0.15,
-        right:MediaQuery.of(context).size.width*0.15
-      ),
+          left: MediaQuery.of(context).size.width * 0.15,
+          right: MediaQuery.of(context).size.width * 0.15),
       margin: EdgeInsets.only(
-        bottom: keyBoardState == true ? 0 : MediaQuery.of(context).size.height*0.13
-      ),
+          bottom: keyBoardState == true
+              ? 0
+              : MediaQuery.of(context).size.height * 0.13),
       decoration: BoxDecoration(
-        // border: Border.all(
-        //   width: 2,
-        //   color: Colors.red
-        // )
-      ),
+          // border: Border.all(
+          //   width: 2,
+          //   color: Colors.red
+          // )
+          ),
       child: Form(
-        child: Column(
-          children: <Widget>[
-            TextFieldCustom(
-              color: Theme.of(context).primaryColorDark,
-              hintText: 'Username',
-              textFocus: focusLoginUser,
-              textController: user,
-              helperText: null,
-              obscureText: false,
-              submit: () => next(),
-              inputAction: TextInputAction.next,
-            ),
-            TextFieldCustom(
-              color: Theme.of(context).primaryColorDark,
-              hintText: 'Password',
-              textFocus: focusLoginPass,
-              textController: pass,
-              helperText: 'Forgot?',
-              obscureText: true,
-              submit: () => finish(),
-              inputAction: TextInputAction.send,
-            ),
-            Container(
+          child: Column(
+        children: <Widget>[
+          TextFieldCustom(
+            color: Theme.of(context).primaryColorDark,
+            hintText: 'Username',
+            textFocus: focusLoginUser,
+            textController: user,
+            helperText: null,
+            obscureText: false,
+            submit: () => next(),
+            inputAction: TextInputAction.next,
+          ),
+          TextFieldCustom(
+            color: Theme.of(context).primaryColorDark,
+            hintText: 'Password',
+            textFocus: focusLoginPass,
+            textController: pass,
+            helperText: 'Forgot?',
+            obscureText: true,
+            submit: () => finish(),
+            inputAction: TextInputAction.send,
+          ),
+          Container(
               margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.width*0.10
-              ),
+                  top: MediaQuery.of(context).size.width * 0.10),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
+                  gradient: LinearGradient(colors: [
                     Theme.of(context).primaryColorLight,
                     Theme.of(context).hoverColor
-                  ]
-                ),
-                borderRadius: BorderRadius.circular(40)
-              ),
-              width: MediaQuery.of(context).size.width *0.73,
+                  ]),
+                  borderRadius: BorderRadius.circular(40)),
+              width: MediaQuery.of(context).size.width * 0.73,
               child: WidgetButton(
-                  child: Text(
-                    "LOG IN",
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                child: Text(
+                  "LOG IN",
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
-                      color: Theme.of(context).accentColor
-                    ),
-                  ),
-                  splashColor: Theme.of(context).accentColor,
-                  bgColor: Color(0x000000),
-                  onpressed: () => finish(),
-              )
-            )
-            
-          ],
-        )
-      ),
+                      color: Theme.of(context).accentColor),
+                ),
+                splashColor: Theme.of(context).accentColor,
+                bgColor: Color(0x000000),
+                onpressed: () => finish(),
+              ))
+        ],
+      )),
     );
   }
 }

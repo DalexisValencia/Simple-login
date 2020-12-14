@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
-import 'package:third_test_app/pages/circle.dart';
-import 'package:third_test_app/pages/header.dart';
+import 'package:third_test_app/Screens/circle.dart';
+import 'package:third_test_app/Screens/header.dart';
 import 'package:third_test_app/widgets/button.dart';
 import 'package:third_test_app/widgets/input.dart';
 
@@ -23,7 +23,8 @@ class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> with WidgetsBindingObserver {
+class _RegisterPageState extends State<RegisterPage>
+    with WidgetsBindingObserver {
   bool animatedOpacity = false;
 
   void changeState(state) {
@@ -34,8 +35,8 @@ class _RegisterPageState extends State<RegisterPage> with WidgetsBindingObserver
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // If user resumed to this app, check permission
-    if(state == AppLifecycleState.resumed) {
-     // checkPermission();
+    if (state == AppLifecycleState.resumed) {
+      // checkPermission();
     }
   }
 
@@ -62,64 +63,49 @@ class _RegisterPageState extends State<RegisterPage> with WidgetsBindingObserver
       child: Stack(
         children: <Widget>[
           Positioned(
-            top: -MediaQuery.of(context).size.width*0.18,
-            right: -MediaQuery.of(context).size.width*0.15,
+            top: -MediaQuery.of(context).size.width * 0.18,
+            right: -MediaQuery.of(context).size.width * 0.15,
             child: CircleGradient(
-              width: MediaQuery.of(context).size.width*0.80,
-              height: MediaQuery.of(context).size.width*0.80,
+              width: MediaQuery.of(context).size.width * 0.80,
+              height: MediaQuery.of(context).size.width * 0.80,
               background: 'plane',
               colors: [Color(0x000000)],
               radius: MediaQuery.of(context).size.height,
               gradiendStart: Alignment.topRight,
               gradientEnd: Alignment.bottomRight,
-              border: Border.all(
-                width: 3,
-                color: Theme.of(context).hoverColor
-              ), 
+              border: Border.all(width: 3, color: Theme.of(context).hoverColor),
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height*0.18,
-            child: AnimatedOpacity(
-              duration: Duration(
-                milliseconds: 800
-              ),
-              opacity: animatedOpacity ? 1 : 0.0,
+              top: MediaQuery.of(context).size.height * 0.18,
               child: AnimatedOpacity(
+                duration: Duration(milliseconds: 800),
                 opacity: animatedOpacity ? 1 : 0.0,
-                duration: Duration(
-                  milliseconds: 800
+                child: AnimatedOpacity(
+                  opacity: animatedOpacity ? 1 : 0.0,
+                  duration: Duration(milliseconds: 800),
+                  child: HeaderCustom(
+                      title: 'SIGN UP',
+                      titleColor: Theme.of(context).hoverColor,
+                      subtitle: 'TO CONTINUE',
+                      subtitleColor: Theme.of(context).accentColor),
                 ),
-                child: HeaderCustom(
-                  title: 'SIGN UP',
-                  titleColor: Theme.of(context).hoverColor,
-                  subtitle: 'TO CONTINUE',
-                  subtitleColor: Theme.of(context).accentColor
-                ),
-              ),
-            ) 
-            
-          ),
+              )),
           Positioned(
-            bottom: 0,
-            child: AnimatedOpacity(
-              opacity: animatedOpacity ? 1 : 0,
-              child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: FormRegister(),
-              ),
-              duration: Duration(
-                milliseconds: 800
-              ),
-            )
-            
-          )
+              bottom: 0,
+              child: AnimatedOpacity(
+                opacity: animatedOpacity ? 1 : 0,
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: FormRegister(),
+                ),
+                duration: Duration(milliseconds: 800),
+              ))
         ],
       ),
     );
   }
 }
-
 
 class FormRegister extends StatefulWidget {
   @override
@@ -145,11 +131,12 @@ class _FormRegisterState extends State<FormRegister> {
     print(emailController.text);
     print(passController.text);
   }
+
   @override
   void initState() {
     super.initState();
-    userController = TextEditingController(); 
-    emailController =TextEditingController();
+    userController = TextEditingController();
+    emailController = TextEditingController();
     passController = TextEditingController();
 
     userFocus = FocusNode();
@@ -164,18 +151,19 @@ class _FormRegisterState extends State<FormRegister> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(
-        left: MediaQuery.of(context).size.width*0.15,
-        right: MediaQuery.of(context).size.width*0.15
-      ),
+          left: MediaQuery.of(context).size.width * 0.15,
+          right: MediaQuery.of(context).size.width * 0.15),
       margin: EdgeInsets.only(
-        bottom: keyBoardState == true ? 0 : MediaQuery.of(context).size.height*0.17
-      ),
+          bottom: keyBoardState == true
+              ? 0
+              : MediaQuery.of(context).size.height * 0.17),
       child: Form(
         child: Column(
           children: <Widget>[
@@ -210,25 +198,23 @@ class _FormRegisterState extends State<FormRegister> {
               inputAction: TextInputAction.send,
             ),
             Container(
-              margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height *0.10
-              ),
-              width: MediaQuery.of(context).size.width *0.73,
-              child: WidgetButton(
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.10),
+                width: MediaQuery.of(context).size.width * 0.73,
+                child: WidgetButton(
                   child: Text(
                     "SIGN UP",
-                    style: Theme.of(context).textTheme.body1.copyWith(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context).primaryColor
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor),
                   ),
                   splashColor: Theme.of(context).primaryColor,
                   bgColor: Theme.of(context).accentColor,
                   onpressed: () => finish(),
-              )
-              // child: ,
-            )
+                )
+                // child: ,
+                )
           ],
         ),
       ),
