@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
-import 'package:third_test_app/Screens/circle.dart';
-import 'package:third_test_app/Screens/header.dart';
-import 'package:third_test_app/widgets/button.dart';
-import 'package:third_test_app/widgets/input.dart';
+import 'package:third_test_app/widgets/form__circleGradient.dart';
+import 'package:third_test_app/widgets/form__header.dart';
+import 'package:third_test_app/widgets/form__button.dart';
+import 'package:third_test_app/widgets/form__input.dart';
 
 class RegisterScaffold extends StatelessWidget {
   final bool animatedOpacityProp;
@@ -77,20 +77,21 @@ class _RegisterPageState extends State<RegisterPage>
             ),
           ),
           Positioned(
-              top: MediaQuery.of(context).size.height * 0.18,
+            top: MediaQuery.of(context).size.height * 0.18,
+            child: AnimatedOpacity(
+              duration: Duration(milliseconds: 800),
+              opacity: animatedOpacity ? 1 : 0.0,
               child: AnimatedOpacity(
-                duration: Duration(milliseconds: 800),
                 opacity: animatedOpacity ? 1 : 0.0,
-                child: AnimatedOpacity(
-                  opacity: animatedOpacity ? 1 : 0.0,
-                  duration: Duration(milliseconds: 800),
-                  child: HeaderCustom(
-                      title: 'SIGN UP',
-                      titleColor: Theme.of(context).hoverColor,
-                      subtitle: 'TO CONTINUE',
-                      subtitleColor: Theme.of(context).accentColor),
-                ),
-              )),
+                duration: Duration(milliseconds: 800),
+                child: FormHeader(
+                    title: 'SIGN UP',
+                    titleColor: Theme.of(context).hoverColor,
+                    subtitle: 'TO CONTINUE',
+                    subtitleColor: Theme.of(context).accentColor),
+              ),
+            ),
+          ),
           Positioned(
               bottom: 0,
               child: AnimatedOpacity(
@@ -201,7 +202,7 @@ class _FormRegisterState extends State<FormRegister> {
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.10),
                 width: MediaQuery.of(context).size.width * 0.73,
-                child: WidgetButton(
+                child: FormButton(
                   child: Text(
                     "SIGN UP",
                     style: Theme.of(context).textTheme.bodyText1.copyWith(

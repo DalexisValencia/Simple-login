@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-class HeaderCustom extends StatelessWidget {
+class FormHeader extends StatelessWidget {
   final String title;
   final Color titleColor;
   final String subtitle;
   final Color subtitleColor;
 
-  HeaderCustom(
-      {this.title, this.titleColor, this.subtitle, this.subtitleColor});
+  FormHeader({
+    this.title,
+    this.titleColor,
+    this.subtitle,
+    this.subtitleColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,11 @@ class HeaderCustom extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            transform: Matrix4.translationValues(0, -25, 0),
+            transform: Matrix4.translationValues(
+              0,
+              -25,
+              0,
+            ),
             width: MediaQuery.of(context).size.width * 0.60,
             child: FittedBox(
               fit: BoxFit.none,
@@ -31,14 +39,20 @@ class HeaderCustom extends StatelessWidget {
             ),
           ),
           Container(
-            transform: Matrix4.translationValues(0, -43, 0),
+            transform: Matrix4.translationValues(
+              0,
+              -43,
+              0,
+            ),
             width: MediaQuery.of(context).size.width * 0.32,
             child: FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(
                 subtitle,
                 style: Theme.of(context).textTheme.headline6.copyWith(
-                    fontWeight: FontWeight.w300, color: subtitleColor),
+                      fontWeight: FontWeight.w300,
+                      color: subtitleColor,
+                    ),
               ),
             ),
           ),

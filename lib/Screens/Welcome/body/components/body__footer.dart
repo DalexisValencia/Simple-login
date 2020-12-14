@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:third_test_app/Screens/login.dart';
+import 'package:third_test_app/Screens/Login/login.dart';
 import 'package:third_test_app/Screens/register.dart';
 
 class WelcomeFooter extends StatelessWidget {
@@ -12,7 +12,9 @@ class WelcomeFooter extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.73,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 10),
+              padding: EdgeInsets.only(
+                bottom: 10,
+              ),
               child: RaisedButton(
                 splashColor: Theme.of(context).hoverColor,
                 color: Theme.of(context).accentColor,
@@ -82,15 +84,16 @@ class WelcomeFooter extends StatelessWidget {
 
 Route createPage(children) {
   return PageRouteBuilder(
-      pageBuilder: (BuildContext context, Animation animation,
-              Animation animationSecondary) =>
-          children,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        //return child;
-        return SlideTransition(
-          position: Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
-              .animate(animation),
-          child: child,
-        );
-      });
+    pageBuilder: (BuildContext context, Animation animation,
+            Animation animationSecondary) =>
+        children,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      //return child;
+      return SlideTransition(
+        position: Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
+            .animate(animation),
+        child: child,
+      );
+    },
+  );
 }

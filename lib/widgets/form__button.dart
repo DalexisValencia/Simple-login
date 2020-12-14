@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class WidgetButton extends StatelessWidget {
+class FormButton extends StatelessWidget {
   final Widget child;
   final Color splashColor;
   final Color bgColor;
-  final Function onpressed; 
+  final Function onpressed;
 
-  WidgetButton({this.child, this.splashColor, this.bgColor, this.onpressed});
+  FormButton({
+    this.child,
+    this.splashColor,
+    this.bgColor,
+    this.onpressed,
+  });
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
@@ -14,12 +19,9 @@ class WidgetButton extends StatelessWidget {
       color: bgColor,
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(40)
+        borderRadius: BorderRadius.circular(40),
       ),
-      padding: EdgeInsets.only(
-        top:22,
-        bottom:22
-      ),
+      padding: EdgeInsets.symmetric(vertical: 22),
       onPressed: onpressed,
       child: child,
       // child: Text(
