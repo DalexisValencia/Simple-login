@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:third_test_app/Screens/Login/components/login__circleHeader.dart';
 import 'package:third_test_app/Screens/Login/components/login__form.dart';
-import 'package:third_test_app/widgets/form__circleGradient.dart';
 import 'package:third_test_app/widgets/form__header.dart';
 
 class LoginScaffold extends StatelessWidget {

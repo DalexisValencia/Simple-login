@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:third_test_app/Screens/Register/components/register__circleHeader.dart';
 import 'package:third_test_app/Screens/Register/components/register__form.dart';
-import 'package:third_test_app/widgets/form__circleGradient.dart';
 import 'package:third_test_app/widgets/form__header.dart';
-import 'package:third_test_app/widgets/form__button.dart';
-import 'package:third_test_app/widgets/form__input.dart';
 
 class RegisterScaffold extends StatelessWidget {
   final bool animatedOpacityProp;
@@ -89,17 +85,18 @@ class _RegisterPageState extends State<RegisterPage>
             ),
           ),
           Positioned(
-              bottom: 0,
-              child: AnimatedOpacity(
-                opacity: animatedOpacity ? 1 : 0,
-                child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: FormRegister(),
-                ),
-                duration: Duration(
-                  milliseconds: 800,
-                ),
-              ))
+            bottom: 0,
+            child: AnimatedOpacity(
+              opacity: animatedOpacity ? 1 : 0,
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: FormRegister(),
+              ),
+              duration: Duration(
+                milliseconds: 800,
+              ),
+            ),
+          )
         ],
       ),
     );
