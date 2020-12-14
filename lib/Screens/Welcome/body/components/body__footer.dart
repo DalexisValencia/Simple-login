@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:third_test_app/Screens/Login/login.dart';
-import 'package:third_test_app/Screens/register.dart';
+import 'package:third_test_app/Screens/Register/register.dart';
 
 class WelcomeFooter extends StatelessWidget {
   @override
