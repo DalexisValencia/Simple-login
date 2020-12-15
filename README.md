@@ -3,18 +3,21 @@
 # Simple Login
 
 This a simple app with three views with gradients circle shapes in the top section. 
-
+The most important in this app are the circle gradients shapes, created with the flutter shape class.
 
 ## Welcome View
 Is the first screen that the user sees.
 
-Only have two link-bottons to LOGIN and to REGISTER.
+Only have two link-bottons: LOGIN and REGISTER.
 
+<img src="https://github.com/DalexisValencia/third_flutter_app-login-/blob/master/video/welcome-view.jpg" alt="drawing" width="450"/>
 ## Login View
 This view has two input fields, user and password. Both have a simple validation. 
+<img src="https://github.com/DalexisValencia/third_flutter_app-login-/blob/master/video/login-view.jpg" alt="drawing" width="450"/>
 
 ## Register View
 This view has three input fields, user, emai and password. All have a simple validation. 
+<img src="https://github.com/DalexisValencia/third_flutter_app-login-/blob/master/video/register-view.jpg" alt="drawing" width="450"/>
 
 ## Preview:
 
