@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:third_test_app/constants/functions.dart';
 import 'package:third_test_app/widgets/form__button.dart';
 import 'package:third_test_app/widgets/form__input.dart';
+import 'package:third_test_app/widgets/form__summmaryTextRich.dart';
 
 class FormRegister extends StatefulWidget {
   @override
@@ -23,9 +27,21 @@ class _FormRegisterState extends State<FormRegister> {
   }
 
   finish() {
-    print(userController.text);
-    print(emailController.text);
-    print(passController.text);
+    List<Widget> summary = [
+      RichTextSummary(
+        name: 'Name',
+        value: userController.text,
+      ),
+      RichTextSummary(
+        name: 'Email',
+        value: emailController.text,
+      ),
+      RichTextSummary(
+        name: 'Pass',
+        value: passController.text,
+      ),
+    ];
+    showMyDialog(context, summary);
   }
 
   @override
