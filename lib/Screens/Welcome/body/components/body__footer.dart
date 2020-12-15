@@ -35,7 +35,7 @@ class WelcomeFooter extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  "SIGN UP",
+                  "LOGIN",
                   style: Theme.of(context).textTheme.bodyText1.copyWith(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
@@ -54,7 +54,7 @@ class WelcomeFooter extends StatelessWidget {
           ),
           GestureDetector(
             child: Text(
-              'Login',
+              'Register',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Theme.of(context).accentColor,

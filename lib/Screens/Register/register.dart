@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage>
                 opacity: animatedOpacity ? 1 : 0.0,
                 duration: Duration(milliseconds: 800),
                 child: FormHeader(
-                  title: 'SIGN UP',
+                  title: 'REGISTER',
                   titleColor: Theme.of(context).hoverColor,
                   subtitle: 'TO CONTINUE',
                   subtitleColor: Theme.of(context).accentColor,

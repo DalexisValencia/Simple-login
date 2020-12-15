@@ -102,7 +102,7 @@ class _FormRegisterState extends State<FormRegister> {
                 width: MediaQuery.of(context).size.width * 0.73,
                 child: FormButton(
                   child: Text(
-                    "SIGN UP",
+                    "REGISTER",
                     style: Theme.of(context).textTheme.bodyText1.copyWith(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
