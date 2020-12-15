@@ -9,14 +9,18 @@ class RegisterScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RegisterPage(animatedOpacityProp: animatedOpacityProp),
+      body: RegisterPage(
+        animatedOpacityProp: animatedOpacityProp,
+      ),
     );
   }
 }
 
 class RegisterPage extends StatefulWidget {
   final bool animatedOpacityProp;
-  RegisterPage({this.animatedOpacityProp});
+  RegisterPage({
+    this.animatedOpacityProp,
+  });
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
