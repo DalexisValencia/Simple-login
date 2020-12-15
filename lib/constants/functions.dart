@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 Future<void> showMyDialog(BuildContext context, List<Widget> summary) async {
+  FocusScope.of(context).requestFocus(new FocusNode());
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -33,4 +34,19 @@ Future<void> showMyDialog(BuildContext context, List<Widget> summary) async {
       );
     },
   );
+}
+
+showSnackBar(BuildContext context, String alert, String type) {
+  final snackBar = SnackBar(
+    backgroundColor: type == 'error'
+        ? Theme.of(context).primaryColor
+        : Theme.of(context).hoverColor,
+    content: Text(
+      alert,
+      style: Theme.of(context).textTheme.button.copyWith(
+            color: Theme.of(context).accentColor,
+          ),
+    ),
+  );
+  Scaffold.of(context).showSnackBar(snackBar);
 }

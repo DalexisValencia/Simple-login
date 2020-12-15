@@ -27,6 +27,21 @@ class _FormRegisterState extends State<FormRegister> {
   }
 
   finish() {
+    if (userController.text.isEmpty) {
+      showSnackBar(context, 'User Name is Required', 'success');
+      return;
+    }
+
+    if (emailController.text.isEmpty) {
+      showSnackBar(context, 'Email is Required', 'success');
+      return;
+    }
+
+    if (passController.text.isEmpty) {
+      showSnackBar(context, 'Password is Required', 'success');
+      return;
+    }
+
     List<Widget> summary = [
       RichTextSummary(
         name: 'Name',

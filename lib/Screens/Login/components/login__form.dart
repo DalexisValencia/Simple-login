@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:third_test_app/constants/functions.dart';
 import 'package:third_test_app/widgets/form__button.dart';
 import 'package:third_test_app/widgets/form__input.dart';
+import 'package:third_test_app/widgets/form__summmaryTextRich.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -16,11 +18,28 @@ class LoginFormState extends State<LoginForm> {
   FocusNode focusLoginPass;
 
   finish() {
-    FocusScope.of(context).requestFocus(
-      new FocusNode(),
-    );
-    print(user.text);
-    print(pass.text);
+    // print(user.text);
+    if (user.text.isEmpty) {
+      showSnackBar(context, 'User Name is required', 'error');
+      return;
+    }
+    if (pass.text.isEmpty) {
+      showSnackBar(context, 'Pass is required', 'error');
+      return;
+    }
+    List<Widget> summary = [
+      RichTextSummary(
+        name: 'Name',
+        value: user.text,
+      ),
+      RichTextSummary(
+        name: 'Pass',
+        value: pass.text,
+      ),
+    ];
+    showMyDialog(context, summary);
+    // print(user.text);
+    // print(pass.text);
   }
 
   next() {
