@@ -30,7 +30,7 @@ class TextFieldCustom extends StatelessWidget {
       onFieldSubmitted: (val) => submit(),
       controller: textController,
       style: TextStyle(
-        color: Colors.white,
+        color: color, // Theme.of(context).hoverColor,
       ),
       decoration: InputDecoration(
         hintText: hintText,
