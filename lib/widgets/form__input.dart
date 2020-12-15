@@ -7,7 +7,7 @@ class TextFieldCustom extends StatelessWidget {
   final TextEditingController textController;
   final String helperText;
   final bool obscureText;
-  final Function submit; 
+  final Function submit;
   final TextInputAction inputAction;
 
   TextFieldCustom({
@@ -18,7 +18,7 @@ class TextFieldCustom extends StatelessWidget {
     this.helperText,
     this.obscureText,
     this.submit,
-    this.inputAction
+    this.inputAction,
   });
 
   @override
@@ -29,32 +29,35 @@ class TextFieldCustom extends StatelessWidget {
       focusNode: textFocus,
       onFieldSubmitted: (val) => submit(),
       controller: textController,
+      style: TextStyle(
+        color: Colors.white,
+      ),
       decoration: InputDecoration(
         hintText: hintText,
         helperText: helperText,
         helperStyle: TextStyle(
           color: color,
-          fontStyle: FontStyle.italic
+          fontStyle: FontStyle.italic,
         ),
         hintStyle: TextStyle(
           color: color,
-          fontWeight: FontWeight.w500
+          fontWeight: FontWeight.w500,
         ),
         disabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: color
-          )
+            color: color,
+          ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: color
-          )
+            color: color,
+          ),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: color
-          )
-        )
+            color: color,
+          ),
+        ),
       ),
     );
   }
