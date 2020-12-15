@@ -37,6 +37,15 @@ class _FormRegisterState extends State<FormRegister> {
       return;
     }
 
+    if (emailController.text.isNotEmpty) {
+      bool emailValid = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+      ).hasMatch(emailController.text);
+      if (!emailValid) {
+        showSnackBar(context, 'Insert a valid email', 'success');
+        return;
+      }
+    }
     if (passController.text.isEmpty) {
       showSnackBar(context, 'Password is Required', 'success');
       return;
