@@ -1,6 +1,27 @@
-# third_test_app
+<img src="https://github.com/DalexisValencia/logos-for-readme/blob/main/flutter/flutter-dart-830.png" alt="drawing" width="450"/>
 
-A new Flutter project.
+# Simple Login
+
+This a simple app with three views with gradients circle shapes in the top section. 
+
+
+## Welcome View
+Is the first screen that the user sees.
+
+Only have two link-bottons to LOGIN and to REGISTER.
+
+## Login View
+This view has two input fields, user and password. Both have a simple validation. 
+
+## Register View
+This view has three input fields, user, emai and password. All have a simple validation. 
+
+## Preview:
+
+![Alt Text](https://github.com/DalexisValencia/third_flutter_app-login-/blob/master/video/Screenrecorder-2020-12-15-16-49-10-645.gif)
+
+
+**Is the gif in bad quality? i invite you to visit [this link](https://youtu.be/t_PX02m55kI)**
 
 ## Getting Started
 
