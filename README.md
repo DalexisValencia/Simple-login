@@ -29,6 +29,16 @@ This view has three input fields, user, emai and password. All have a simple val
 
 **Is the gif in bad quality? i invite you to visit [this link](https://youtu.be/t_PX02m55kI)**
 
+
+## Technical Details:
+
+```
+Flutter version 1.22.3
+Dart version 2.10.3
+```
+
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
